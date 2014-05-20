@@ -12,3 +12,5 @@ INSTALACION
 5) Subir este proyecto con los datos configurados a google app engine mediante su sdk ( mas info https://appengine.google.com/)
 
 6) Acceder a la url de su proyecto en google app engine
+
+Ej Resultado: http://tufilmoteca.appspot.com
