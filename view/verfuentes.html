@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block titulo%}
+<a href="{{tit.ImdbLink}}" target="_blank"> {{tit.MovieTitle|title}} </a>
+{% endblock %}
+
+{% block subtitulo%}
+
+{% endblock %}
+{% block content%}
+
+{% block socialscripts %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+
+    <div id="myCarousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="active item"><img src="{{ tit.LargeScreenshot1 }}" class="img-polaroid" alt="{{tit.MovieTitle}}"></div>
+        <div class="item"><img src="{{ tit.LargeScreenshot2 }}" class="img-polaroid" alt="{{tit.MovieTitle}}"></div>
+        <div class="item"><img src="{{ tit.LargeScreenshot3 }}" class="img-polaroid" alt="{{tit.MovieTitle}}"></div>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+
+    <script type="text/javascript">
+    $('.carousel').carousel();
+    </script>
+
+      
+    </div>
+  </div>
+</div>
+    <div class="gris">
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <img src="{{ tit.LargeCover }}" alt="{{tit.MovieTitle}}">
+    </div>
+    <div class="span6">
+      
+      <p><strong>Sinópsis:</strong> {{tit.LongDescription}}</p>
+      <p><strong>Dirección:</strong> {% for d in tit.DirectorList %} <a href="{{ d.DirectorImdbLink }}" class="btn btn-link" target="_blank">{{d.DirectorName}} </a> {% endfor %}</p>
+      <p><strong>Reparto:</strong> {% for d in tit.CastList %} <a href="{{ d.ActorImdbLink }}" class="btn btn-link" target="_blank">{{d.ActorName}} </a> {% endfor %}</p>
+      <p><strong>Género:</strong> {{tit.Genre1}}-{{tit.Genre2}}</p>
+      <p><strong>Duración:</strong> {{tit.MovieRuntime}} min</p>
+     
+    </div>
+    <div class="span3">
+      <div class="puntaje">
+      
+      </div>
+      
+    </div>
+    <div class="span3">
+      <div class="promedio">
+      <h1>{{tit.MovieRating}}</h1>
+      <a href="{{tit.ImdbLink}}reviews-enter" target="_blank" class="btn btn-info">Puntuar</a>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+<h2>Trailer</h2>
+<div style="text-align:center">
+  
+    <iframe width="60%" height="315px" src="//www.youtube.com/embed/{{tit.YoutubeTrailerID}}" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="container-fluid">
+          <div class="row-fluid">
+            <div class="span12">
+                <div class="widget wred">
+                <div class="widget-head">
+                  <div class="pull-left">{{tit.MovieTitleClean|title}}</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+                  <div class="widget-content" style="display: block;">
+
+                    <table class="table  table-bordered ">
+                      <thead>
+                        <tr>
+                          <th>Data</th>
+                          <th>Info</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Torrent</td>
+                          <td> <a href="{{tit.TorrentUrl}}" class="btn btn-primary">Descargar</a></td>
+                        </tr> 
+                        <tr>
+                          <td>Magnet</td>
+                          <td> <a href="{{tit.TorrentMagnetUrl}}" class="btn btn-primary">Descargar</a></td>
+                        </tr>
+
+                        <tr>
+                          <td>Torrent Hash</td>
+                          <td>{{ tit.TorrentHash }}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Subtitulos</td>
+                          <td><a href="http://www.opensubtitles.org/es/search/imdbid-{{tit.ImdbCode}}" target="_blank" class="btn btn-primary">Descargar</a></td>
+                        </tr>   
+                        <tr>
+                          <td>Seeds</td>
+                          <td>{{ tit.TorrentSeeds }}</td>
+                        </tr>
+                        <tr>
+                          <td>Tamaño</td>
+                          <td>{{ tit.Size }}</td>
+                        </tr>   
+
+                        <tr>
+                          <td>Calidad</td>
+                          <td>{{ tit.Quality }}</td>
+                        </tr>                                                        
+                       
+                      </tbody>
+                    </table>
+
+                  </div>
+
+                    <div class="widget-foot">
+                      <div class="clearfix"></div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="fb-comments fb-com" data-href="{{conf.DOMINIO}}/peliculas/{{tit.MovieID}}" data-numposts="10" data-colorscheme="light"></div>
+    </div>
+  </div>
+</div>       
+{% endblock %}

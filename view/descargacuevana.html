@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block titulo%}
+Descarga video y subtitulo
+{% endblock %}
+
+{% block subtitulo%}
+Sus link de descarga
+{% endblock %}
+{% block socialscripts %}
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+  {lang: 'es-419'}
+</script>
+<script>
+//window.location.href = "http://cuevanadownloader.daletsinweb.com.ar/link.php?urlv={{linkvideo}}&ursrt={{linksub}}";
+</script>
+<div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+{%block content%}
+
+<!--
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span6"><iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="300" height="250" SRC="http://ad.adnetwork.net/st?ad_type=iframe&ad_size=300x250&section=3522159" ></iframe></div>
+		<div class="span6"><iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="300" height="250" SRC="http://ad.adnetwork.net/st?ad_type=iframe&ad_size=300x250&section=3522159" ></iframe></div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12"><iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="728" height="90" SRC="http://ad.adnetwork.net/st?ad_type=iframe&ad_size=728x90&section=3522159" ></iframe></div>
+	</div>
+</div>
+-->
+
+
+<div class="container-fluid gris">
+
+	<a href= '{{linkvideo}}' download="video.flv" class="btn btn-primary" target='_blank'>
+		DESCARGA VIDEO
+	</a>
+
+	<p>Link de video</p>
+	<div class="alert alert-info">
+	{{linkvideo}}
+	</div>
+	{% if linksub != "" %}
+	<a href= '{{linksub}}' download="subtitulo.srt" class="btn btn-primary" target='_blank'>
+		DESCARGA SUBTITULO
+	</a>
+	<p>Link del subtitulo</p>
+	<div class="alert alert-info">
+	{{linksub}}
+	</div>
+	{% endif %}
+
+	{% if linksub == "" %}
+	<p>Link del subtitulo</p>
+	<div class="alert alert-info">
+	Aún no hay subtitulos disponibles
+	</div>
+	{% endif %}
+</div>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/es_XC/AR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
+<div class="container-fluid gris">
+	<p>Queridos usuarios, debido a la eliminación de los anuncios en esta página para lograr una mejor accesibilidad, el mantenimiento de Cuevanadownloader se ve afectado notablemente. Por esto mismo decidi pedir su colaboración para el mantenimiento de la misma, si desea ayudar puede realizar una donación mediante el botón "Donar", no importa la suma, todo será profundamente agradecido, saludos.</p>
+</div>
+{% block socialwidget %}
+<div class="span6">
+                <div class="fb-like-box" data-href="http://www.facebook.com/cuevanadownload" data-width="450" data-height="250" data-show-faces="true" data-stream="false" data-header="true"></div>
+            </div>
+            <div class="span6">
+              <div class="g-plus" data-width="450" data-href="//plus.google.com/100561339660351963205?rel=publisher"></div>
+            </div>
+{% endblock %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="fb-comments span12" data-href="http://www.daletsinweb.com.ar/cuevanadownloader" data-num-posts="10" data-width="600"></div>
+	</div>
+</div>
+{%endblock%}

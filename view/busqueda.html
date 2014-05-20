@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo%}
+Tu Filmoteca
+{% endblock %}
+
+{% block subtitulo%}
+Busqueda: {{buscar_espacio}}
+{% endblock %}
+{% block content%}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+		    <div class="widget wblue">
+		      <div class="widget-head">
+		        <div class="pull-left">Resultados para: {{buscar_espacio}}</div>
+		        <div class="widget-icons pull-right">
+		          <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+		          <a href="#" class="wclose"><i class="icon-remove"></i></a>
+		        </div>
+		        <div class="clearfix"></div>
+		      </div>
+		      <div class="widget-content">
+		        <div class="padd">                    
+		          <div class="gallery">
+		          	{% for p in pelis %}		          	
+		            <a href="/peliculas/{{p.MovieID}}" data-toggle="tooltip" data-trigger ="hover" data-placement="right" title data-original-title="<b>Título: </b>{{p.MovieTitleClean|title}}</br><b>Puntaje: </b>{{ p.MovieRating}}</br><b>calidad: </b>{{ p.Quality}}</br><b>Género: </b>{{p.Genre}}" data-html = "true" data-animation="true" class="fotosindex"><img src="{{ p.CoverImage }}" class="img-polaroid" alt="{{ p.MovieTitleClean }}"></a>
+		           
+		          	{% endfor %}
+		          	<a class='navigation' href="/busqueda?buscar={{buscar}}&pag={{pagsig}}" title="">>></a>
+		          </div>
+		        </div>
+		      </div>
+		        <div class="widget-foot">
+		                    <!-- Footer goes here -->
+		        </div>
+		    </div>  
+		              
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}
