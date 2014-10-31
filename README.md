@@ -9,8 +9,6 @@ INSTALACION
 
 4) Modificar el archivo conf/__init__.py con los datos obtenidos en los puntos 2) y 3)
 
-5) Subir este proyecto con los datos configurados a google app engine mediante su sdk ( mas info https://appengine.google.com/)
+5) Subir este proyecto con los datos configurados a google app engine, o directamente levantar un servidor en local utilizando el sdk ( mas info https://appengine.google.com/)
 
-6) Acceder a la url de su proyecto en google app engine
-
-Ej Resultado: http://tufilmoteca.appspot.com
+6) Acceder a la url de su proyecto en google app engine, o acceder al servidor local (ej: http://localhost:8080)
